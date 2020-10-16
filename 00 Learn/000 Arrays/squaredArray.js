@@ -12,20 +12,19 @@ var sortedSquares = function(A) {
     let searchIndex = 0;
     let posNumIndex;
     let negNumIndex;
-    
-    while (A[searchIndex] < 0 && searchIndex < (A.length - 1)) {
-        searchIndex++;
-    }
 
-    if (searchIndex === A.length - 1) {
-        posNumIndex = null;
-        negNumIndex = A.length - 1;
-    }
-    else if (A[0] >= 0) {
+    if (A[0] >= 0) {
         negNumIndex = null;
         posNumIndex = 0;
     }
+    else if (A[A.length - 1] < 0) {
+        negNumIndex = A.length - 1;
+        posNumIndex = null;
+    }
     else {
+        while (A[searchIndex] < 0 && searchIndex < (A.length - 1)) {
+            searchIndex++;
+        }
         negNumIndex = searchIndex - 1;
         posNumIndex = searchIndex;
     }
@@ -50,7 +49,7 @@ var sortedSquares = function(A) {
     return squaredArray;
 };
 
-const array = [-5, -3, -2, -1];
+const array = [-2, 0];
 // const array = [0, 1, 2, 3] ;
 // const array = [-3, -1, 0, 2, 4];
 
