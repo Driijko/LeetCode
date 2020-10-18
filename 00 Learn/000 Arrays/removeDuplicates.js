@@ -10,7 +10,7 @@ var removeDuplicates = function(nums) {
 
     while (currentIndex < nums.length) {
 
-        if (currentVal === null) {
+        if (nums[currentIndex] !== currentVal) {
             currentVal = nums[currentIndex];
             currentIndex++;
         }
@@ -31,6 +31,7 @@ var removeDuplicates = function(nums) {
     return nums.length;
 };
 
-const nums = [0,0,1,1,1,2,2,3,3,4];
+// const nums = [0,0,1,1,1,2,2,3,3,4];
+const nums = [1, 1, 1, 1, 1, 2, 3, 5, 5, 5, 5, 5, 5];
 console.log(removeDuplicates(nums));
 console.log(nums);
