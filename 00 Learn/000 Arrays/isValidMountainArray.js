@@ -4,6 +4,10 @@
  */
 var validMountainArray = function(A) {
 
+    if (A === null || A.length < 3) {
+        return false;
+    }
+
     let stage = "increasing";
     let lastNum = A[0];
 
@@ -12,11 +16,17 @@ var validMountainArray = function(A) {
         const num = A[i];
 
         if (stage === "increasing") {
+    
             if (num === lastNum) {
                 return false;
             }
             else if (num < lastNum) {
-                stage = "decreasing";
+                if (i === 1) {
+                    return false;
+                }
+                else {
+                    stage = "decreasing";
+                }
             }
         }
         else if (stage === "decreasing") {
@@ -28,7 +38,12 @@ var validMountainArray = function(A) {
         lastNum = num;
     }
 
-    return true;
+    if (stage === "decreasing") {
+        return true;
+    }
+    else {
+        return false;
+    }
 };
 
 const array = [0,3,2,1, 2];
