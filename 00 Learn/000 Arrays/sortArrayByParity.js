@@ -4,25 +4,19 @@
  */
 var sortArrayByParity = function(A) {
     
-    let result = [];
     let writePointer = 0;
+    let temp;
 
-    A.forEach(num => {
+    A.forEach((num, index) => {
         if (num % 2 === 0) {
-            result[writePointer] = num;
+            temp = A[writePointer];
+            A[writePointer] = num;
+            A[index] = temp;
             writePointer++;
         }
     })
-
-    A.forEach(num => {
-        if (!(num % 2 === 0)) {
-            result[writePointer] = num;
-            writePointer++;
-        }
-    })
-
-    return result;
 };
 
-const array = [3,1,2,4];
-console.log(sortArrayByParity(array));
+const array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+sortArrayByParity(array)
+console.log(array);
