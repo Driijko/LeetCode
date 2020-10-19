@@ -8,26 +8,30 @@ var moveZeroes = function(nums) {
         return;
     }
     
-    let numOfZeros = 0;
+    let numOfFrontZeros = 0;
     let writePointer = 0;
 
-    nums.forEach((num, readPointer)=> {
+    nums.forEach((num, index)=> {
 
-        if (num === 0) {
-            numOfZeros++;
+        if (
+            num === 0
+            && index < (nums.length - numOfFrontZeros)
+        ) {
+            numOfFrontZeros++;
         }
         else {
-            nums[writePointer] = nums[readPointer];
+            nums[writePointer] = nums[index];
             writePointer++;
         }
 
-        if (readPointer >= (nums.length - numOfZeros)) {
-            nums[readPointer] = 0;
+        if (index >= (nums.length - numOfFrontZeros)) {
+            nums[index] = 0;
         }
+
     })
 };
 
-const array = [0,1,0,3,12];
+const array = [0,1, 0, 1];
 moveZeroes(array);
 console.log(array);
 // [1,3,12,0,0]
